@@ -3,6 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import Page from '../../components/page.vue';
+import Page from '../../components/Page.vue';
 
 </script>

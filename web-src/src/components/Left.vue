@@ -7,12 +7,67 @@
         Godeye
       </router-link>
       <div class="text-sm">
+
+
+      
+  
+
+  <TransitionRoot appear :show="isOpen" as="template">
+    <Dialog as="div" @close="closeModal" class="relative z-10">
+      <TransitionChild
+        as="template"
+        enter="duration-300 ease-out"
+        enter-from="opacity-0"
+        enter-to="opacity-100"
+        leave="duration-200 ease-in"
+        leave-from="opacity-100"
+        leave-to="opacity-0"
+      >
+        <div class="fixed inset-0 bg-black bg-opacity-25" />
+      </TransitionChild>
+
+      <div class="fixed inset-0 overflow-y-auto">
+        <div
+          class="flex min-h-full items-center justify-center p-4 text-center"
+        >
+          <TransitionChild
+            as="template"
+            enter="duration-300 ease-out"
+            enter-from="opacity-0 scale-95"
+            enter-to="opacity-100 scale-100"
+            leave="duration-200 ease-in"
+            leave-from="opacity-100 scale-100"
+            leave-to="opacity-0 scale-95"
+          >
+            <DialogPanel
+              class="w-full max-w-md transform overflow-hidden rounded bg-white p-6 text-left align-middle shadow-xl transition-all"
+            >
+              <DialogTitle
+                as="h3"
+                class="text-lg font-medium leading-6 text-gray-900"
+              >
+                创建会话
+              </DialogTitle>
+              <div class="mt-2 flex">
+                <div class=" w-10 h-10 m-2 border">
+                    mysql
+                </div>
+                <div class=" w-10 h-10 m-2 border">
+                    redis
+                </div>
+              </div>
+
+              
+            </DialogPanel>
+          </TransitionChild>
+        </div>
+      </div>
+    </Dialog>
+  </TransitionRoot>
+
+
         <font-awesome-icon
-          @click="
-            () => {
-              $router.push({ path: '/app/create' });
-            }
-          "
+        @click="openModal"
           class="mx-1 border dark:border-gray-900 p-2 rounded-full hover:bg-gray-100 cursor-pointer"
           icon="add"
         />
@@ -59,7 +114,7 @@
             "
           >
             <div class="flex flex-grow">
-              <img src="../adapter/mysql/assets/mysql.png" class="w-4 h-4 mx-2" />
+              <img :src="s.icon" class="w-4 h-4 mx-2" />
               <div class="text-sm">{{ s.name }}</div>
             </div>
           </div>
@@ -85,11 +140,26 @@ import { icon } from "@fortawesome/fontawesome-svg-core";
 import { ref, watch, watchEffect } from 'vue'
 import { Switch } from '@headlessui/vue'
 
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from '@headlessui/vue'
+
 var list = ref([
-  new Session("1", "本地数据库"),
-  new Session("2", "测试数据库"),
-  new Session("3", "演示数据库"),
-  new Session("4", "生产数据库"),
+  new Session("1", "本地数据库","/assets/mysql.png"),
+  new Session("2", "测试数据库","/assets/mysql.png"),
+  new Session("3", "演示数据库","/assets/mysql.png"),
+  new Session("4", "生产数据库","/assets/mysql.png"),
+  new Session("5", "生产数据库","/assets/redis.png"),
+  new Session("6", "生产数据库","/assets/redis.png"),
+  new Session("7", "生产数据库","/assets/redis.png"),
+  new Session("8", "生产数据库","/assets/redis.png"),
+  new Session("9", "生产数据库","/assets/redis.png"),
+  new Session("10", "生产数据库","/assets/redis.png"),
+  new Session("11", "生产数据库","/assets/redis.png"),
 ]);
 
 const enabled = ref(false)
@@ -116,4 +186,16 @@ watch(enabled,()=>{
         }
     }
 })
+
+
+
+
+const isOpen = ref(false)
+
+function closeModal() {
+  isOpen.value = false
+}
+function openModal() {
+  isOpen.value = true
+}
 </script>

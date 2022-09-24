@@ -10,11 +10,6 @@ import { RouteRecordRaw } from "vue-router";
         path: "/app",
         component: () => import(`../layout/app.layout.vue`),
         children:[
-          
-            {
-                path:"create",
-                component: () => import(`../page/app/create.vue`),
-            },
             {
                 path:"setting",
                 component: () => import(`../page/app/setting.vue`),
@@ -23,8 +18,18 @@ import { RouteRecordRaw } from "vue-router";
                 path:"",
                 component: () => import(`../page/app/main.vue`),
             },
+            {
+                path:"create/mysql",
+                component: () => import(`../adapter/mysql/Create.vue`),
+            },
+            {
+                path:"create/redis",
+                component: () => import(`../adapter/redis/Create.vue`),
+            },
         ]   
     },
+
+  
    
     {
         path: "/:id",

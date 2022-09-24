@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { ref } from "@vue/reactivity";
-import Page from "../../components/page.vue";
+import Page from "../../components/Page.vue";
 import Tab from "../../components/Tab.vue";
 import TabItem from "../../components/TabItem.vue";
 </script>

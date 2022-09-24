@@ -6,5 +6,5 @@
 </template>
 
 <script setup lang="ts">
-import Left from "../components/left.vue";
+import Left from "../components/Left.vue";
 </script>
