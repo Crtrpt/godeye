@@ -26,7 +26,7 @@ const router = createRouter({
 });
 
 var app=createApp(App);
-
+app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(createPinia());
 
