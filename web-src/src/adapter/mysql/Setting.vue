@@ -1,9 +1,10 @@
 <template>
   <Page title="创建" desc="创建mysql连接">
     <template #foot>
-      <div class="foot p-2 h-12 border-t dark:border-gray-700 flex flex-row-reverse items-center">
+      <div class="foot p-2 h-10 border-t dark:border-gray-700 flex flex-row-reverse items-center">
         <PrimaryBtn title="测试"></PrimaryBtn>
-        <SecondaryBtn title="保存"></SecondaryBtn>
+        <SecondaryBtn title="保存" @click="save"></SecondaryBtn>
+        <DangerBtn title="删除" @click="remove"></DangerBtn>
       </div>
     </template>
 
@@ -169,14 +170,28 @@ import Page from "../../components/Page.vue";
 import { Session } from "../../type";
 import PrimaryBtn from "../../components/PrimaryBtn.vue";
 import SecondaryBtn from "../../components/SecondaryBtn.vue";
-import Table from "../../adapter/mysql/Table.vue";
-import Tab from "../../components/Tab.vue";
+import DangerBtn from "../../components/DangerBtn.vue";
+
+import Table from "./Table.vue";
+import Tab from   "../../components/Tab.vue";
 import TabItem from "../../components/TabItem.vue";
-import MysqlPayload from "../../type/MysqlPayload";
+import MysqlPayload from "./MysqlPayload";
 import SshTunnel from "../../type/tunnel/SshTunnel";
+import { sessionStore } from "../../store/sessionStore";
 
 var form = ref<Session<MysqlPayload>>();
 form.value = new Session("");
 form.value.payload = new MysqlPayload();
 form.value.tunnel=new SshTunnel();
+
+const session=sessionStore();
+
+const save=()=>{
+ 
+  form.value!.icon="/assets/mysql.png";
+  session.create(form.value);
+}
+const remove=()=>{
+  console.log("删除")
+}
 </script>

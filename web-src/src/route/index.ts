@@ -1,5 +1,13 @@
 import { RouteRecordRaw } from "vue-router";
 
+import UdpServerRoute  from "../adapter/udpServer/route";
+import UdpClientRoute  from "../adapter/udpClient/route";
+import TcpServerRoute  from "../adapter/tcpServer/route";
+import TcpClientRoute  from "../adapter/tcpClient/route";
+import MysqlRoute from "../adapter/mysql/route";
+import HttpRoute from "../adapter/http/route";
+import MqttRoute from "../adapter/mqtt/route";
+
  const route: Readonly<RouteRecordRaw[]> =[
     {
         path: "/",
@@ -20,7 +28,7 @@ import { RouteRecordRaw } from "vue-router";
             },
             {
                 path:"create/mysql",
-                component: () => import(`../adapter/mysql/Create.vue`),
+                component: () => import(`../adapter/mysql/Setting.vue`),
             },
             {
                 path:"create/redis",
@@ -35,16 +43,14 @@ import { RouteRecordRaw } from "vue-router";
         path: "/:id",
         component: () => import(`../layout/app.layout.vue`),
         children:[
-            {
-                path:"mysql/table",
-                component: () => import(`../adapter/mysql/Index.vue`),
-            },
-            {
-                path:"mysql/table/:name",
-                component: () => import(`../adapter/mysql/Table.vue`),
-            },
-            {
-                
+            ...MysqlRoute,
+            ...TcpServerRoute,
+            ...TcpClientRoute,
+            ...UdpServerRoute,
+            ...UdpClientRoute,
+            ...HttpRoute,
+            ...MqttRoute,
+            {     
                 path:"",
                 component: () => import(`../page/session/main.vue`),
             },

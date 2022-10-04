@@ -4,10 +4,9 @@ import Tunnel from "./Tunnel";
 import SshTunnel from "./tunnel/SshTunnel";
 
 class Session<T> {
-  
   constructor(
     id:string="",
-    name: string="新建连接",
+    name: string="",
     icon:string="",
     type: DriverType.MYSQL=DriverType.MYSQL,
     connect_status: ConnectStatus.Normal=ConnectStatus.Normal,

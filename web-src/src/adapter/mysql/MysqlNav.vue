@@ -9,7 +9,7 @@
                     <div class="w-5"></div>    
                     <div class="border-l dark:border-gray-700  pl-3 py-2 flex-grow">表</div>
                 </div>
-                <div class="border dark:border-gray-700 bg-gray-200  dark:bg-gray-800 px-2  text-xs rounded-full">200</div>
+                <!-- <div class="border dark:border-gray-700 bg-gray-200  dark:bg-gray-800 px-2  text-xs rounded-full">200</div> -->
             </div>
             <div>
                 <div

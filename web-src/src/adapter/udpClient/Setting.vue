@@ -1,5 +1,5 @@
 <template>
-    <Page title="创建" desc="创建redis连接">
+    <Page title="创建" :desc="'创建'+form?.payload.type+'连接'">
       <template #foot>
         <div class="foot p-2 h-10 border-t dark:border-gray-700 flex flex-row-reverse items-center">
           <PrimaryBtn title="测试"></PrimaryBtn>
@@ -38,9 +38,14 @@
                   "
                   type="text"
                 />
+              </div>
+            </div>
+            <div class="block py-1">
+              <span class="text-gray-700">端口:</span>
+              <div class="flex">
                 <input
                   v-model="form.payload.port"
-                  placeholder="端口号"
+                  placeholder="端口"
                   class="
                     block
                     text-sm
@@ -54,41 +59,8 @@
                 />
               </div>
             </div>
-  
-            <div class="block py-1">
-              <span class="text-gray-700">用户名:</span>
-              <div class="flex">
-                <input
-                  v-model="form.payload.username"
-                  placeholder="用户名"
-                  class="
-                    block
-                    text-sm
-                    form-input
-                    px-2
-                    py-1
-                    rounded
-                    border-gray-300
-                  "
-                  type="text"
-                />
-                <input
-                  v-model="form.payload.password"
-                  placeholder="密码"
-                  class="
-                    block
-                    text-sm
-                    form-input
-                    px-2
-                    py-1
-                    rounded
-                    border-gray-300
-                  "
-                  type="password"
-                />
-              </div>
-            </div></form
-        ></TabItem>
+            </form>
+            </TabItem>
         <TabItem name="隧道" :active="scope">
   
           <div class="block py-1">
@@ -175,19 +147,19 @@
   import Table from "./Table.vue";
   import Tab from "../../components/Tab.vue";
   import TabItem from "../../components/TabItem.vue";
-  import RedisPayload from "./RedisPayload";
   import SshTunnel from "../../type/tunnel/SshTunnel";
   import { sessionStore } from "../../store/sessionStore";
+  import UdpClientPayload from "./UdpClientPayload";
 
-  var form = ref<Session<RedisPayload>>();
+  var form = ref<Session<UdpClientPayload>>();
   form.value = new Session("");
-  form.value.payload = new RedisPayload();
+  form.value.payload = new UdpClientPayload();
   form.value.tunnel=new SshTunnel();
-  
+
   const session=sessionStore();
   
   const save=()=>{
-    form.value!.icon="/assets/redis.png";
+    form.value!.icon="/assets/swap.png";
     session.create(form.value);
   }
   const remove=()=>{

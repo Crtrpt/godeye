@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col w-full h-full">
-        <div class="head flex flex-shrink-0 justify-center items-center p-2 h-12 border-b dark:border-gray-700">
+        <div class="head bg-gray-100 dark:bg-gray-900 flex flex-shrink-0 justify-center items-center p-2 h-12 border-b dark:border-gray-700">
            <div class="flex-grow flex items-baseline">
             <div class=" text-gray-500">{{title}}</div>
             <div class="pl-2  text-xs text-gray-400">{{desc}}</div>
@@ -12,7 +12,7 @@
                 <slot ></slot>
             </div>
         </slot>
-        <slot name="foot" class="">
+        <slot name="foot" class=" bg-gray-100">
           
         </slot>
     </div>

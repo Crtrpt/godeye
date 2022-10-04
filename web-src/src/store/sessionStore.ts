@@ -5,10 +5,13 @@ import { Session } from '../type/Index'
 export const sessionStore=defineStore('session',()=>{
     var count=ref<number>(0);
     
-    var list=ref<Array<Session>>();
+    var list=ref<Array<Session<any>>>([]);
     
-    function create(payload:Session){
-        list.value?.push(payload);
+    function create(payload:Session<any>){
+        list.value?.push({
+            ...payload,
+            "id":new Date().getTime().toString()
+        });
         count.value++;
     };
 
@@ -27,5 +30,5 @@ export const sessionStore=defineStore('session',()=>{
            
         }
     }
-    return {list,create,remove,update,query}
+    return {count,list,create,remove,update,query}
 })
