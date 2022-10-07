@@ -28,19 +28,11 @@
                 <SplitItem id="aa">
                     <div class="h-full flex-grow p-2  overflow-auto flex flex-col" >
 
-                        <template v-for="i in range(10)" :key="i">
-                            <div class=" p-1  flex flex-col">
-                             <div class="flex flex-row text-xs text-gray-600 mb-2">
-                                <div >time:11:20:20</div>
-                                <div class="ml-1">topic:/test/test1</div>
-                             </div>
-                              <div class="p-1  rounded-sm border bg-gray-100  h-20">content:</div>
-                            </div>
-                        </template>
+                       结果显示页面
                     </div>
                 </SplitItem>
                 <SplitItem id="bb">
-                    <Publish></Publish>
+                    <Console></Console>
                 </SplitItem>
             </Split>
        
@@ -71,6 +63,7 @@ import SplitItem from "../../components/SplitItem.vue";
 import { useRoute } from "vue-router";
 import {range} from "lodash";
 import InfoBtn from "../../components/InfoBtn.vue";
+import Console from "./Console.vue";
 
 const route=useRoute();
 

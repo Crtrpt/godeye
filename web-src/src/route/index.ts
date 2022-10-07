@@ -7,6 +7,7 @@ import TcpClientRoute  from "../adapter/tcpClient/route";
 import MysqlRoute from "../adapter/mysql/route";
 import HttpRoute from "../adapter/http/route";
 import MqttRoute from "../adapter/mqtt/route";
+import RedisRoute from "../adapter/redis/route";
 
  const route: Readonly<RouteRecordRaw[]> =[
     {
@@ -26,14 +27,6 @@ import MqttRoute from "../adapter/mqtt/route";
                 path:"",
                 component: () => import(`../page/app/main.vue`),
             },
-            {
-                path:"create/mysql",
-                component: () => import(`../adapter/mysql/Setting.vue`),
-            },
-            {
-                path:"create/redis",
-                component: () => import(`../adapter/redis/Create.vue`),
-            },
         ]   
     },
 
@@ -50,6 +43,7 @@ import MqttRoute from "../adapter/mqtt/route";
             ...UdpClientRoute,
             ...HttpRoute,
             ...MqttRoute,
+            ...RedisRoute,
             {     
                 path:"",
                 component: () => import(`../page/session/main.vue`),

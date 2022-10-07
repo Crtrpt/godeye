@@ -12,7 +12,8 @@ class Session<T> {
     connect_status: ConnectStatus.Normal=ConnectStatus.Normal,
     expand:boolean=false,
     payload:T|undefined=undefined,
-    tunnel:Tunnel=SshTunnel
+    tunnel:Tunnel=SshTunnel,
+    config:Map<String,any>=new Map()
   ) {
     this.id=id;
     this.name = name;
@@ -22,6 +23,7 @@ class Session<T> {
     this.icon=icon;
     this.payload=payload;
     this.tunnel=tunnel;
+    this.config=config;
   }
   id:string
   name: string;
@@ -30,7 +32,8 @@ class Session<T> {
   expand:boolean;
   icon:String;
   payload?:T|undefined;
-  tunnel?:Tunnel=SshTunnel
+  tunnel?:Tunnel=SshTunnel;
+  config?:Map<String,any>;
 }
 
 export default Session;

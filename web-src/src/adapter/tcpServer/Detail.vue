@@ -1,3 +1,9 @@
 <template>
-    <div>tcp server 服务器详情</div>
+    <Page title="TcpServer">
+        <div>日志xxx</div>
+    </Page>
 </template>
+
+<script setup lang="ts">
+import Page from '../../components/Page.vue';
+</script>

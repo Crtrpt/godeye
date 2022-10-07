@@ -4,12 +4,24 @@ const MysqlRoute=[
         component: () => import(`./Setting.vue`),
     },
     {
-        path:"mysql/table",
+        path:"mysql/detail",
         component: () => import(`./Index.vue`),
     },
     {
+        path:"mysql/table",
+        component: () => import(`./page/database/DataBaseIndex.vue`),
+    },
+    {
         path:"mysql/table/:name",
-        component: () => import(`./Table.vue`),
+        component: () => import(`./table/Table.vue`),
+    },
+    {
+        path:"mysql/table/:name/setting",
+        component: () => import(`./table/Setting.vue`),
+    },
+    {
+        path:"mysql/query/:name",
+        component: () => import(`./Query.vue`),
     }
 ]
 

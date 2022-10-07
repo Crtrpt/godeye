@@ -85,7 +85,7 @@
                   <img src="/assets/http.png" class="w-8 h-8 mx-2" />
                   <div>http</div>
                 </router-link>
-                
+
               <router-link
                 @click="(e)=>{isOpen=false}" 
                 :to="{path:'/new/mqtt/setting'}"
@@ -98,24 +98,20 @@
                 <div class="grid gap-2  grid-cols-4">
                 <router-link 
                 @click="(e)=>{isOpen=false}"
-                :to="{path:'/app/create/mysql'}"
+                :to="{path:'/app/mysql/setting'}"
                 class=" flex flex-col items-center justify-center  w-20  h-20 m-2 rounded border-2 hover:border-blue-500">
                   <img src="/assets/mysql.png" class="w-8 h-8 mx-2" />
                   <div>mysql</div>
                 </router-link>
                 <router-link
                 @click="(e)=>{isOpen=false}" 
-                :to="{path:'/app/create/redis'}"
+                :to="{path:'/app/redis/setting'}"
                 class="flex flex-col items-center justify-center w-20 h-20 rounded m-2 border-2 hover:border-blue-500">
                   <img src="/assets/redis.png" class="w-8 h-8 mx-2" />
                   <div>redis</div>
                 </router-link>
-
-              
               </div>
               </div>
-
-              
             </DialogPanel>
           </TransitionChild>
         </div>
@@ -166,15 +162,17 @@
                 $router.push({ path: '/' + s.id+'/'+s.payload.type+'/detail' });
               }"
               >{{ s.name }}</div>
-                <font-awesome-icon
+                <!-- <font-awesome-icon
                 @click="()=>goSetting(s)"
                 class="h-3 px-1  text-gray-400  hover:text-gray-600
                   rounded-full  cursor-pointer"
                 icon="ellipsis-vertical"
-                ></font-awesome-icon>
+                ></font-awesome-icon> -->
             </div>
           </div>
-          <component :is="'MysqlNav'"  v-if="s.expand"></component>
+          <component :is="MqttNav" :session="s" v-if="s.expand && s.payload.type=='mqtt'"></component>
+          <component :is="MysqlNav"  :session="s" v-if="s.expand && s.payload.type=='mysql'"></component>
+          <component :is="RedisNav" :session="s"  v-if="s.expand && s.payload.type=='redis'"></component>
          
         </div>
       </template>
@@ -209,11 +207,10 @@
 <script setup lang="ts">
 import { Session } from "../type";
 import MysqlNav from "../adapter/mysql/MysqlNav.vue";
+import MqttNav from "../adapter/mqtt/MqttNav.vue";
+import RedisNav from "../adapter/redis/RedisNav.vue";
+
 // import RedisNav from "../adapter/redis/Nav.vue";
-// import HttpNav from "../adapter/http/Nav.vue";
-// import MqttNav from "../adapter/mqtt/Nav.vue";
-
-
 
 import { icon } from "@fortawesome/fontawesome-svg-core";
 

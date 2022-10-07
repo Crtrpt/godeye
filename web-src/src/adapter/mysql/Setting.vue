@@ -2,7 +2,7 @@
   <Page title="创建" desc="创建mysql连接">
     <template #foot>
       <div class="foot p-2 h-10 border-t dark:border-gray-700 flex flex-row-reverse items-center">
-        <PrimaryBtn title="测试"></PrimaryBtn>
+        <PrimaryBtn title="测试连接"></PrimaryBtn>
         <SecondaryBtn title="保存" @click="save"></SecondaryBtn>
         <DangerBtn title="删除" @click="remove"></DangerBtn>
       </div>
@@ -87,7 +87,18 @@
                 type="password"
               />
             </div>
-          </div></form
+          </div>
+          
+          <div class="block py-1">
+            <span class="text-gray-700">数据库:</span>
+            <input
+              v-model="form.payload.database"
+              placeholder="输入你要连接的数据库"
+              class="block text-sm form-input px-2 py-1 rounded border-gray-300"
+              type="text"
+            />
+          </div>
+          </form
       ></TabItem>
       <TabItem name="隧道" :active="scope">
 

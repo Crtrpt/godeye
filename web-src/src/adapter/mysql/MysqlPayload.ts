@@ -7,6 +7,7 @@ class MysqlPayload {
     port:number=3306
     username?:string="root"
     password?:string=""
+    database?:String=""
 }
 
 export default MysqlPayload;
